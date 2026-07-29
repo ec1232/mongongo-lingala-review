@@ -26,13 +26,16 @@ async function render() {
   );
 }
 
-test("renders the Mongongo review shell", async () => {
+test("renders the Évaluation Lingala review shell", async () => {
   const response = await render();
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
-  assert.match(html, /<title>Mongongo — Lingala sentence review<\/title>/i);
+  assert.match(
+    html,
+    /<title>Évaluation Lingala — Native-speaker review<\/title>/i,
+  );
   assert.match(html, /Préparation de l’évaluation/);
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape/i);
 
@@ -59,7 +62,7 @@ test("packages the exact held-out evaluation draft", async () => {
   assert.equal(new Set(evaluation.lines.map((line) => line.id)).size, 200);
 });
 
-test("keeps the remote review private-by-design and easy to return", async () => {
+test("keeps submission private, constrained, and easy for reviewers", async () => {
   const [page, frenchAids, css, layout] = await Promise.all([
     readFile(new URL("app/page.tsx", root), "utf8"),
     readFile(new URL("app/intents-fr.ts", root), "utf8"),
@@ -68,16 +71,20 @@ test("keeps the remote review private-by-design and easy to return", async () =>
   ]);
 
   assert.match(page, /localStorage\.setItem/);
-  assert.match(page, /navigator\.share/);
-  assert.match(page, /navigator\.canShare/);
+  assert.match(page, /functions\/v1\/submit-lingala-review/);
+  assert.match(page, /method:\s*"POST"/);
+  assert.match(page, /contact@intellingo\.app/);
+  assert.match(page, /Envoyer mes réponses/);
+  assert.match(page, /Submit my answers/);
   assert.match(page, /new File/);
   assert.match(page, /link\.download/);
   assert.match(page, /approved_as_written/);
   assert.match(page, /approved_with_correction/);
   assert.match(page, /needs_discussion/);
   assert.match(page, /result_type:\s*"lingala_native_text_review"/);
-  assert.match(page, /Vos réponses restent sur ce téléphone/);
-  assert.match(page, /Your answers stay on this phone/);
+  assert.match(page, /transmis en privé à contact@intellingo\.app/);
+  assert.match(page, /sent privately to contact@intellingo\.app/);
+  assert.doesNotMatch(page, /navigator\.share/);
 
   const ids = [...frenchAids.matchAll(/"LNG-\d{3}":/g)].map((match) =>
     match[0].slice(1, 8),

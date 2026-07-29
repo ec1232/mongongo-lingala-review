@@ -1,4 +1,4 @@
-# Mongongo review app
+# Évaluation Lingala review app
 
 Phone-first native-speaker review for the held-out Lingala TTS evaluation set.
 
@@ -7,14 +7,16 @@ Phone-first native-speaker review for the held-out Lingala TTS evaluation set.
 - French interface by default, with an English switch.
 - One large Lingala sentence at a time.
 - Three main answers: natural, rewrite, or unsure.
-- Progress saves only in the reviewer's browser.
+- Progress saves in the reviewer's browser.
 - Each device/session remains separate.
-- Finish uses the phone share sheet when file sharing is supported.
-- Download is always available as a fallback.
+- One final button sends the completed review privately to
+  `contact@intellingo.app`.
+- A download appears as a recovery option if automatic sending fails.
 
-The app has no account system, analytics, database, or response-collection
-backend. A reviewer must intentionally send the exported JSON file back through
-WhatsApp, email, or another channel.
+The app has no account system or analytics. The submission receiver accepts
+only the fixed evaluation schema, stores a private backup with row-level
+security, rate-limits requests, suppresses duplicate sends, and emails the
+review as a JSON attachment to the fixed Intellingo destination.
 
 ## Data boundary
 

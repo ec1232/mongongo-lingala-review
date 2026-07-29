@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Mongongo — Lingala sentence review",
+  title: "Évaluation Lingala — Native-speaker review",
   description:
     "A simple native-speaker review for the held-out Lingala TTS evaluation set.",
   icons: {
@@ -10,9 +10,9 @@ export const metadata: Metadata = {
     shortcut: "/favicon.svg",
   },
   openGraph: {
-    title: "Mongongo — Lingala sentence review",
+    title: "Évaluation Lingala — Native-speaker review",
     description: "Help us check that these sentences sound natural in Lingala.",
-    images: ["/mongongo-review-card.png"],
+    images: ["/lingala-review-card.png"],
   },
 };
 

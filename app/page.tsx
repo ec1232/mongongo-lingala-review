@@ -54,6 +54,8 @@ type ReviewSession = {
   started_at: string;
   updated_at: string;
   completed_at: string | null;
+  submitted_at?: string | null;
+  submission_id?: string | null;
   reviews: Record<string, Review>;
 };
 
@@ -65,6 +67,8 @@ const TARGET_APPROVALS = 150;
 const ACTIVE_SESSION_KEY = "mongongo:active-session";
 const SESSION_PREFIX = "mongongo:session:";
 const LOCALE_KEY = "mongongo:locale";
+const SUBMISSION_ENDPOINT =
+  "https://giialrhkoqghytkizrgv.supabase.co/functions/v1/submit-lingala-review";
 
 const COPY: Record<Locale, Copy> = {
   fr: {
@@ -72,7 +76,7 @@ const COPY: Record<Locale, Copy> = {
     loadError: "L’évaluation n’a pas pu être chargée. Réessayez plus tard.",
     language: "English",
     kicker: "Évaluation Lingala · Version 1",
-    title: "Mongongo",
+    title: "Évaluation Lingala",
     intro:
       "Aidez-nous à vérifier que ces phrases sonnent naturelles en Lingala.",
     nameLabel: "Votre prénom et nom",
@@ -85,9 +89,10 @@ const COPY: Record<Locale, Copy> = {
     howTitle: "C’est très simple",
     howOne: "Lisez une phrase en Lingala.",
     howTwo: "Dites si elle est naturelle ou corrigez-la.",
-    howThree: "À la fin, envoyez le petit fichier à la personne qui vous a donné ce lien.",
+    howThree:
+      "À la fin, touchez Envoyer : vos réponses arriveront automatiquement.",
     privacy:
-      "Vos réponses restent sur ce téléphone jusqu’à ce que vous choisissiez de les envoyer.",
+      "En touchant Envoyer, votre nom et vos réponses seront transmis en privé à contact@intellingo.app et conservés comme copie de sécurité.",
     saved: "Enregistré automatiquement sur ce téléphone",
     progress: "Progression",
     approved: "naturelles ou corrigées",
@@ -116,21 +121,27 @@ const COPY: Record<Locale, Copy> = {
     currentUnsure: "Vous avez indiqué : pas sûr(e)",
     currentRejected: "Vous avez indiqué : ne pas utiliser",
     change: "Modifier ma réponse",
-    finishTitle: "Votre évaluation est prête",
+    finishTitle: "Votre évaluation est prête à envoyer",
     finishEnough:
       "Merci — vous avez vérifié suffisamment de phrases pour cette étape.",
     finishPartial:
       "Vous pouvez envoyer ce résultat maintenant ou continuer plus tard. Chaque réponse nous aide.",
     sendInstruction:
-      "Touchez le bouton ci-dessous, puis choisissez WhatsApp ou votre application e-mail pour envoyer le fichier à la personne qui vous a donné le lien.",
-    share: "Partager mon évaluation",
-    download: "Télécharger le fichier",
+      "Touchez une fois le bouton vert. Vos réponses seront envoyées directement et en privé à contact@intellingo.app.",
+    submit: "Envoyer mes réponses",
+    submitting: "Envoi en cours…",
+    sentTitle: "Merci, c’est envoyé !",
+    sent:
+      "Vos réponses ont bien été envoyées à contact@intellingo.app. Vous n’avez rien d’autre à faire.",
+    sendFailed:
+      "L’envoi n’a pas fonctionné. Vos réponses sont toujours enregistrées sur ce téléphone. Réessayez.",
+    retry: "Réessayer l’envoi",
+    download: "Télécharger une copie de secours",
+    needOne: "Vérifiez au moins une phrase avant d’envoyer.",
     continue: "Continuer à vérifier",
-    shared: "Le fichier est prêt à être envoyé.",
     downloaded:
-      "Le fichier a été téléchargé. Envoyez-le maintenant par WhatsApp ou e-mail.",
-    shareFailed:
-      "Le partage n’a pas fonctionné. Utilisez le bouton Télécharger le fichier.",
+      "La copie de secours a été téléchargée. Vos réponses restent aussi enregistrées sur ce téléphone.",
+    anotherReviewer: "Commencer pour une autre personne",
     nameError: "Veuillez écrire votre nom avant de commencer.",
     correctionError: "Veuillez modifier la phrase avant de l’enregistrer.",
     progressSaved: "Vous pourrez revenir avec ce même lien sur ce téléphone.",
@@ -141,7 +152,7 @@ const COPY: Record<Locale, Copy> = {
     loadError: "The review could not be loaded. Please try again later.",
     language: "Français",
     kicker: "Lingala evaluation · Version 1",
-    title: "Mongongo",
+    title: "Lingala Evaluation",
     intro: "Help us check that these sentences sound natural in Lingala.",
     nameLabel: "Your full name",
     namePlaceholder: "For example, Marie Ilunga",
@@ -154,9 +165,9 @@ const COPY: Record<Locale, Copy> = {
     howOne: "Read one sentence in Lingala.",
     howTwo: "Say if it is natural, or correct it.",
     howThree:
-      "At the end, send the small file to the person who gave you this link.",
+      "At the end, tap Submit: your answers will arrive automatically.",
     privacy:
-      "Your answers stay on this phone until you choose to send them.",
+      "When you tap Submit, your name and answers will be sent privately to contact@intellingo.app and retained as a safety copy.",
     saved: "Saved automatically on this phone",
     progress: "Progress",
     approved: "natural or corrected",
@@ -185,27 +196,46 @@ const COPY: Record<Locale, Copy> = {
     currentUnsure: "You marked this as unsure",
     currentRejected: "You marked this as do not use",
     change: "Change my answer",
-    finishTitle: "Your review is ready",
+    finishTitle: "Your review is ready to submit",
     finishEnough:
       "Thank you — you checked enough sentences for this stage.",
     finishPartial:
       "You can send this result now or continue later. Every answer helps.",
     sendInstruction:
-      "Tap the button below, then choose WhatsApp or your email app to send the file to the person who gave you this link.",
-    share: "Share my review",
-    download: "Download the file",
+      "Tap the green button once. Your answers will be sent directly and privately to contact@intellingo.app.",
+    submit: "Submit my answers",
+    submitting: "Submitting…",
+    sentTitle: "Thank you — sent!",
+    sent:
+      "Your answers were sent to contact@intellingo.app. You do not need to do anything else.",
+    sendFailed:
+      "Sending did not work. Your answers are still saved on this phone. Please try again.",
+    retry: "Try sending again",
+    download: "Download a backup copy",
+    needOne: "Please review at least one sentence before submitting.",
     continue: "Keep reviewing",
-    shared: "The file is ready to send.",
     downloaded:
-      "The file was downloaded. Send it now by WhatsApp or email.",
-    shareFailed:
-      "Sharing did not work. Use the Download the file button instead.",
+      "The backup copy was downloaded. Your answers also remain saved on this phone.",
+    anotherReviewer: "Start for another person",
     nameError: "Please enter your name before starting.",
     correctionError: "Please change the sentence before saving it.",
     progressSaved: "You can return with this same link on this phone.",
     heldOut: "Evaluation only · never used for training",
   },
 };
+
+function newUuid() {
+  if (typeof crypto !== "undefined" && "randomUUID" in crypto) {
+    return crypto.randomUUID();
+  }
+  const bytes = crypto.getRandomValues(new Uint8Array(16));
+  bytes[6] = (bytes[6] & 0x0f) | 0x40;
+  bytes[8] = (bytes[8] & 0x3f) | 0x80;
+  const hex = Array.from(bytes, (value) =>
+    value.toString(16).padStart(2, "0"),
+  ).join("");
+  return `${hex.slice(0, 8)}-${hex.slice(8, 12)}-${hex.slice(12, 16)}-${hex.slice(16, 20)}-${hex.slice(20)}`;
+}
 
 function newSession(setId: string, reviewer: string, locale: Locale): ReviewSession {
   const now = new Date().toISOString();
@@ -214,10 +244,7 @@ function newSession(setId: string, reviewer: string, locale: Locale): ReviewSess
     result_type: "lingala_native_text_review",
     set_id: setId,
     reviewer: reviewer.trim(),
-    session_id:
-      typeof crypto !== "undefined" && "randomUUID" in crypto
-        ? crypto.randomUUID()
-        : `${Date.now()}-${Math.random().toString(16).slice(2)}`,
+    session_id: newUuid(),
     locale,
     started_at: now,
     updated_at: now,
@@ -253,7 +280,7 @@ function makeResult(dataset: EvalSet, session: ReviewSession) {
   const stats = countReviews(session);
   return {
     ...session,
-    completed_at: new Date().toISOString(),
+    completed_at: session.completed_at ?? new Date().toISOString(),
     summary: {
       total_lines: dataset.lines.length,
       reviewed_lines: stats.reviewed,
@@ -261,7 +288,7 @@ function makeResult(dataset: EvalSet, session: ReviewSession) {
       target_approvals: TARGET_APPROVALS,
     },
     source: {
-      app: "Mongongo native-speaker review",
+      app: "Évaluation Lingala native-speaker review",
       eval_schema_version: dataset.schema_version,
       eval_created_at: dataset.created_at,
       held_out: dataset.held_out,
@@ -311,6 +338,8 @@ export default function Home() {
   const [correctionError, setCorrectionError] = useState(false);
   const [showFinish, setShowFinish] = useState(false);
   const [shareMessage, setShareMessage] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
   const correctionRef = useRef<HTMLTextAreaElement>(null);
 
   const t = COPY[locale];
@@ -332,6 +361,7 @@ export default function Home() {
         if (stored) {
           setSession(stored);
           setName(stored.reviewer);
+          setSubmitted(Boolean(stored.submitted_at));
           const firstUnreviewed = loaded.lines.findIndex(
             (line) => !stored.reviews[line.id],
           );
@@ -373,6 +403,8 @@ export default function Home() {
     setIndex(0);
     setStarted(true);
     setNameError(false);
+    setSubmitted(false);
+    setShareMessage("");
   }
 
   function resumeReview() {
@@ -382,6 +414,8 @@ export default function Home() {
     );
     setIndex(firstUnreviewed === -1 ? 0 : firstUnreviewed);
     setStarted(true);
+    setSubmitted(Boolean(session.submitted_at));
+    if (session.submitted_at) setShowFinish(true);
   }
 
   function startDifferentReview() {
@@ -389,6 +423,9 @@ export default function Home() {
     setName("");
     setIndex(0);
     setStarted(false);
+    setSubmitted(false);
+    setShowFinish(false);
+    setShareMessage("");
     localStorage.removeItem(ACTIVE_SESSION_KEY);
   }
 
@@ -487,44 +524,41 @@ export default function Home() {
     link.remove();
     URL.revokeObjectURL(url);
     setShareMessage(t.downloaded);
-    setSession({
-      ...session,
-      completed_at: new Date().toISOString(),
-      updated_at: new Date().toISOString(),
-    });
   }
 
-  async function shareResult() {
-    if (!dataset || !session) return;
-    const file = resultFile(dataset, session);
-    const shareData = {
-      title: `Lingala review — ${session.reviewer}`,
-      text:
-        locale === "fr"
-          ? "Voici mon évaluation des phrases en Lingala."
-          : "Here is my Lingala sentence review.",
-      files: [file],
-    };
-
+  async function submitResult() {
+    if (!dataset || !session || stats.reviewed < 1 || submitting) return;
+    setSubmitting(true);
+    setShareMessage("");
+    const result = makeResult(dataset, session);
     try {
-      if (
-        typeof navigator.share === "function" &&
-        typeof navigator.canShare === "function" &&
-        navigator.canShare(shareData)
-      ) {
-        await navigator.share(shareData);
-        setShareMessage(t.shared);
-        setSession({
-          ...session,
-          completed_at: new Date().toISOString(),
-          updated_at: new Date().toISOString(),
-        });
-        return;
+      const response = await fetch(SUBMISSION_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(result),
+      });
+      const responseBody = (await response.json()) as {
+        ok?: boolean;
+        submission_id?: string;
+      };
+      if (!response.ok || !responseBody.ok || !responseBody.submission_id) {
+        throw new Error("submission_failed");
       }
-      downloadResult();
-    } catch (error) {
-      if (error instanceof DOMException && error.name === "AbortError") return;
-      setShareMessage(t.shareFailed);
+
+      const sentAt = new Date().toISOString();
+      setSession({
+        ...session,
+        completed_at: result.completed_at,
+        updated_at: sentAt,
+        submitted_at: sentAt,
+        submission_id: responseBody.submission_id,
+      });
+      setSubmitted(true);
+      setShareMessage("");
+    } catch {
+      setShareMessage(t.sendFailed);
+    } finally {
+      setSubmitting(false);
     }
   }
 
@@ -540,7 +574,7 @@ export default function Home() {
     return (
       <main className="center-shell loading-shell" aria-live="polite">
         <span className="loading-mark" aria-hidden="true">
-          M
+          ✓
         </span>
         <p>{t.loading}</p>
       </main>
@@ -639,7 +673,7 @@ export default function Home() {
     <main className="review-shell">
       <header className="review-header">
         <div>
-          <p className="mini-brand">Mongongo<span>.</span></p>
+          <p className="mini-brand">Évaluation Lingala<span>.</span></p>
           <p className="reviewer-name">{session.reviewer}</p>
         </div>
         <div className="header-actions">
@@ -848,7 +882,9 @@ export default function Home() {
           className="modal-backdrop"
           role="presentation"
           onMouseDown={(event) => {
-            if (event.target === event.currentTarget) setShowFinish(false);
+            if (!submitted && event.target === event.currentTarget) {
+              setShowFinish(false);
+            }
           }}
         >
           <section
@@ -857,48 +893,83 @@ export default function Home() {
             aria-modal="true"
             aria-labelledby="finish-title"
           >
-            <button
-              className="close-button"
-              onClick={() => setShowFinish(false)}
-              aria-label={t.cancel}
-              type="button"
-            >
-              ×
-            </button>
+            {!submitted && (
+              <button
+                className="close-button"
+                onClick={() => setShowFinish(false)}
+                aria-label={t.cancel}
+                type="button"
+              >
+                ×
+              </button>
+            )}
             <span className="finish-mark" aria-hidden="true">✓</span>
             <p className="kicker">{session.reviewer}</p>
-            <h2 id="finish-title">{t.finishTitle}</h2>
+            <h2 id="finish-title">
+              {submitted ? t.sentTitle : t.finishTitle}
+            </h2>
             <div className="finish-stats">
               <strong>{stats.reviewed}</strong>
               <span>{t.reviewed}</span>
               <strong>{stats.approved}</strong>
               <span>{t.approved}</span>
             </div>
-            <p className="finish-summary">
-              {stats.approved >= TARGET_APPROVALS
-                ? t.finishEnough
-                : t.finishPartial}
-            </p>
-            <p className="send-instruction">{t.sendInstruction}</p>
-            <button className="primary-button share-button" onClick={shareResult} type="button">
-              <span aria-hidden="true">↗</span>
-              {t.share}
-            </button>
-            <button className="download-button" onClick={downloadResult} type="button">
-              {t.download}
-            </button>
-            {shareMessage && (
-              <p className="share-message" aria-live="polite">
-                {shareMessage}
-              </p>
+            {submitted ? (
+              <>
+                <p className="sent-confirmation" aria-live="polite">
+                  {t.sent}
+                </p>
+                <button
+                  className="text-button"
+                  onClick={startDifferentReview}
+                  type="button"
+                >
+                  {t.anotherReviewer}
+                </button>
+              </>
+            ) : (
+              <>
+                <p className="finish-summary">
+                  {stats.approved >= TARGET_APPROVALS
+                    ? t.finishEnough
+                    : t.finishPartial}
+                </p>
+                <p className="send-instruction">{t.sendInstruction}</p>
+                <button
+                  className="primary-button share-button"
+                  onClick={submitResult}
+                  disabled={stats.reviewed < 1 || submitting}
+                  type="button"
+                >
+                  <span aria-hidden="true">{submitting ? "…" : "→"}</span>
+                  {submitting ? t.submitting : shareMessage ? t.retry : t.submit}
+                </button>
+                {stats.reviewed < 1 && (
+                  <p className="share-message">{t.needOne}</p>
+                )}
+                {shareMessage && (
+                  <>
+                    <p className="share-message error-message" aria-live="polite">
+                      {shareMessage}
+                    </p>
+                    <button
+                      className="download-button"
+                      onClick={downloadResult}
+                      type="button"
+                    >
+                      {t.download}
+                    </button>
+                  </>
+                )}
+                <button
+                  className="text-button"
+                  onClick={() => setShowFinish(false)}
+                  type="button"
+                >
+                  {t.continue}
+                </button>
+              </>
             )}
-            <button
-              className="text-button"
-              onClick={() => setShowFinish(false)}
-              type="button"
-            >
-              {t.continue}
-            </button>
           </section>
         </div>
       )}
