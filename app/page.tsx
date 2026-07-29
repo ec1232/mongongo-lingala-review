@@ -320,12 +320,7 @@ function resultFile(dataset: EvalSet, session: ReviewSession) {
 export default function Home() {
   const [dataset, setDataset] = useState<EvalSet | null>(null);
   const [loadError, setLoadError] = useState(false);
-  const [locale, setLocale] = useState<Locale>(() => {
-    if (typeof window === "undefined") return "fr";
-    const storedLocale = localStorage.getItem(LOCALE_KEY);
-    if (storedLocale === "en" || storedLocale === "fr") return storedLocale;
-    return navigator.language.toLowerCase().startsWith("fr") ? "fr" : "en";
-  });
+  const [locale, setLocale] = useState<Locale>("fr");
   const [session, setSession] = useState<ReviewSession | null>(null);
   const [started, setStarted] = useState(false);
   const [name, setName] = useState("");
@@ -348,6 +343,20 @@ export default function Home() {
     ? session?.reviews[currentLine.id]
     : undefined;
   const stats = useMemo(() => countReviews(session), [session]);
+
+  useEffect(() => {
+    const storedLocale = localStorage.getItem(LOCALE_KEY);
+    const preferredLocale =
+      storedLocale === "en" || storedLocale === "fr"
+        ? storedLocale
+        : navigator.language.toLowerCase().startsWith("fr")
+          ? "fr"
+          : "en";
+    const frame = window.requestAnimationFrame(() =>
+      setLocale(preferredLocale),
+    );
+    return () => window.cancelAnimationFrame(frame);
+  }, []);
 
   useEffect(() => {
     fetch("/evaluation.json")

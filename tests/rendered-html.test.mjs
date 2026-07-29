@@ -71,6 +71,8 @@ test("keeps submission private, constrained, and easy for reviewers", async () =
   ]);
 
   assert.match(page, /localStorage\.setItem/);
+  assert.match(page, /useState<Locale>\("fr"\)/);
+  assert.match(page, /navigator\.language/);
   assert.match(page, /functions\/v1\/submit-lingala-review/);
   assert.match(page, /method:\s*"POST"/);
   assert.match(page, /contact@intellingo\.app/);
