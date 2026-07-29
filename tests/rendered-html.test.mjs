@@ -5,13 +5,13 @@ import test from "node:test";
 
 const root = new URL("../", import.meta.url);
 
-async function render() {
+async function render(path = "/") {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
   const { default: worker } = await import(workerUrl.href);
 
   return worker.fetch(
-    new Request("http://localhost/", {
+    new Request(`http://localhost${path}`, {
       headers: { accept: "text/html" },
     }),
     {
@@ -111,4 +111,23 @@ test("keeps submission private, constrained, and easy for reviewers", async () =
   assert.match(css, /min-height:\s*100svh/);
   assert.match(css, /touch-action:\s*manipulation/);
   assert.doesNotMatch(layout, /maximumScale/);
+});
+
+test("renders and statically exports the private results route", async () => {
+  const response = await render("/results");
+  assert.equal(response.status, 200);
+  assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
+
+  const html = await response.text();
+  assert.match(
+    html,
+    /<title>Lingala Review Results — Private dashboard<\/title>/i,
+  );
+  assert.match(html, /Opening the private results desk/);
+
+  const staticHtml = await readFile(
+    new URL("dist/client/results/index.html", root),
+    "utf8",
+  );
+  assert.equal(staticHtml, html);
 });
