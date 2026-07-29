@@ -63,7 +63,7 @@ type Copy = {
   [key: string]: string;
 };
 
-const TARGET_APPROVALS = 150;
+const TARGET_APPROVALS = 40;
 const ACTIVE_SESSION_KEY = "mongongo:active-session";
 const SESSION_PREFIX = "mongongo:session:";
 const LOCALE_KEY = "mongongo:locale";
@@ -78,7 +78,7 @@ const COPY: Record<Locale, Copy> = {
     kicker: "Évaluation Lingala · Version 1",
     title: "Évaluation Lingala",
     intro:
-      "Aidez-nous à vérifier que ces phrases sonnent naturelles en Lingala.",
+      "Aidez-nous à vérifier 50 phrases courtes en Lingala.",
     nameLabel: "Votre prénom et nom",
     namePlaceholder: "Par exemple, Marie Ilunga",
     start: "Commencer",
@@ -90,7 +90,7 @@ const COPY: Record<Locale, Copy> = {
     howOne: "Lisez une phrase en Lingala.",
     howTwo: "Dites si elle est naturelle ou corrigez-la.",
     howThree:
-      "À la fin, touchez Envoyer : vos réponses arriveront automatiquement.",
+      "Après les 50 phrases, touchez Envoyer : vos réponses arriveront automatiquement.",
     privacy:
       "En touchant Envoyer, votre nom et vos réponses seront transmis en privé à contact@intellingo.app et conservés comme copie de sécurité.",
     saved: "Enregistré automatiquement sur ce téléphone",
@@ -122,10 +122,15 @@ const COPY: Record<Locale, Copy> = {
     currentRejected: "Vous avez indiqué : ne pas utiliser",
     change: "Modifier ma réponse",
     finishTitle: "Votre évaluation est prête à envoyer",
+    finishIncompleteTitle: "Votre évaluation n’est pas encore terminée",
     finishEnough:
-      "Merci — vous avez vérifié suffisamment de phrases pour cette étape.",
-    finishPartial:
-      "Vous pouvez envoyer ce résultat maintenant ou continuer plus tard. Chaque réponse nous aide.",
+      "Merci — les 50 phrases sont vérifiées et prêtes à être envoyées.",
+    finishBelow:
+      "Merci — les 50 phrases sont vérifiées. Vos réponses nous montreront lesquelles retravailler.",
+    finishPartialOne:
+      "Il reste une phrase à vérifier. Touchez Continuer pour y aller directement.",
+    finishPartialMany:
+      "Il reste {count} phrases à vérifier. Touchez Continuer pour aller directement à la prochaine.",
     sendInstruction:
       "Touchez une fois le bouton vert. Vos réponses seront envoyées directement et en privé à contact@intellingo.app.",
     submit: "Envoyer mes réponses",
@@ -137,7 +142,6 @@ const COPY: Record<Locale, Copy> = {
       "L’envoi n’a pas fonctionné. Vos réponses sont toujours enregistrées sur ce téléphone. Réessayez.",
     retry: "Réessayer l’envoi",
     download: "Télécharger une copie de secours",
-    needOne: "Vérifiez au moins une phrase avant d’envoyer.",
     continue: "Continuer à vérifier",
     downloaded:
       "La copie de secours a été téléchargée. Vos réponses restent aussi enregistrées sur ce téléphone.",
@@ -153,7 +157,7 @@ const COPY: Record<Locale, Copy> = {
     language: "Français",
     kicker: "Lingala evaluation · Version 1",
     title: "Lingala Evaluation",
-    intro: "Help us check that these sentences sound natural in Lingala.",
+    intro: "Help us check 50 short sentences in Lingala.",
     nameLabel: "Your full name",
     namePlaceholder: "For example, Marie Ilunga",
     start: "Start",
@@ -165,7 +169,7 @@ const COPY: Record<Locale, Copy> = {
     howOne: "Read one sentence in Lingala.",
     howTwo: "Say if it is natural, or correct it.",
     howThree:
-      "At the end, tap Submit: your answers will arrive automatically.",
+      "After all 50 sentences, tap Submit: your answers will arrive automatically.",
     privacy:
       "When you tap Submit, your name and answers will be sent privately to contact@intellingo.app and retained as a safety copy.",
     saved: "Saved automatically on this phone",
@@ -197,10 +201,15 @@ const COPY: Record<Locale, Copy> = {
     currentRejected: "You marked this as do not use",
     change: "Change my answer",
     finishTitle: "Your review is ready to submit",
+    finishIncompleteTitle: "Your review is not finished yet",
     finishEnough:
-      "Thank you — you checked enough sentences for this stage.",
-    finishPartial:
-      "You can send this result now or continue later. Every answer helps.",
+      "Thank you — all 50 sentences are checked and ready to submit.",
+    finishBelow:
+      "Thank you — all 50 sentences are checked. Your answers will show us which ones need more work.",
+    finishPartialOne:
+      "One sentence remains. Tap Keep reviewing to go straight to it.",
+    finishPartialMany:
+      "{count} sentences remain. Tap Keep reviewing to go straight to the next one.",
     sendInstruction:
       "Tap the green button once. Your answers will be sent directly and privately to contact@intellingo.app.",
     submit: "Submit my answers",
@@ -212,7 +221,6 @@ const COPY: Record<Locale, Copy> = {
       "Sending did not work. Your answers are still saved on this phone. Please try again.",
     retry: "Try sending again",
     download: "Download a backup copy",
-    needOne: "Please review at least one sentence before submitting.",
     continue: "Keep reviewing",
     downloaded:
       "The backup copy was downloaded. Your answers also remain saved on this phone.",
@@ -343,6 +351,9 @@ export default function Home() {
     ? session?.reviews[currentLine.id]
     : undefined;
   const stats = useMemo(() => countReviews(session), [session]);
+  const allReviewed = Boolean(
+    dataset && stats.reviewed === dataset.lines.length,
+  );
 
   useEffect(() => {
     const storedLocale = localStorage.getItem(LOCALE_KEY);
@@ -521,6 +532,15 @@ export default function Home() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
+  function continueReview() {
+    if (!dataset || !session) return;
+    const firstUnreviewed = dataset.lines.findIndex(
+      (line) => !session.reviews[line.id],
+    );
+    setShowFinish(false);
+    if (firstUnreviewed !== -1) goTo(firstUnreviewed);
+  }
+
   function downloadResult() {
     if (!dataset || !session) return;
     const file = resultFile(dataset, session);
@@ -536,7 +556,7 @@ export default function Home() {
   }
 
   async function submitResult() {
-    if (!dataset || !session || stats.reviewed < 1 || submitting) return;
+    if (!dataset || !session || !allReviewed || submitting) return;
     setSubmitting(true);
     setShareMessage("");
     const result = makeResult(dataset, session);
@@ -912,10 +932,16 @@ export default function Home() {
                 ×
               </button>
             )}
-            <span className="finish-mark" aria-hidden="true">✓</span>
+            <span className="finish-mark" aria-hidden="true">
+              {submitted || allReviewed ? "✓" : "…"}
+            </span>
             <p className="kicker">{session.reviewer}</p>
             <h2 id="finish-title">
-              {submitted ? t.sentTitle : t.finishTitle}
+              {submitted
+                ? t.sentTitle
+                : allReviewed
+                  ? t.finishTitle
+                  : t.finishIncompleteTitle}
             </h2>
             <div className="finish-stats">
               <strong>{stats.reviewed}</strong>
@@ -939,40 +965,48 @@ export default function Home() {
             ) : (
               <>
                 <p className="finish-summary">
-                  {stats.approved >= TARGET_APPROVALS
-                    ? t.finishEnough
-                    : t.finishPartial}
+                  {allReviewed
+                    ? stats.approved >= TARGET_APPROVALS
+                      ? t.finishEnough
+                      : t.finishBelow
+                    : dataset.lines.length - stats.reviewed === 1
+                      ? t.finishPartialOne
+                      : t.finishPartialMany.replace(
+                          "{count}",
+                          String(dataset.lines.length - stats.reviewed),
+                        )}
                 </p>
-                <p className="send-instruction">{t.sendInstruction}</p>
-                <button
-                  className="primary-button share-button"
-                  onClick={submitResult}
-                  disabled={stats.reviewed < 1 || submitting}
-                  type="button"
-                >
-                  <span aria-hidden="true">{submitting ? "…" : "→"}</span>
-                  {submitting ? t.submitting : shareMessage ? t.retry : t.submit}
-                </button>
-                {stats.reviewed < 1 && (
-                  <p className="share-message">{t.needOne}</p>
-                )}
-                {shareMessage && (
+                {allReviewed && (
                   <>
-                    <p className="share-message error-message" aria-live="polite">
-                      {shareMessage}
-                    </p>
+                    <p className="send-instruction">{t.sendInstruction}</p>
                     <button
-                      className="download-button"
-                      onClick={downloadResult}
+                      className="primary-button share-button"
+                      onClick={submitResult}
+                      disabled={submitting}
                       type="button"
                     >
-                      {t.download}
+                      <span aria-hidden="true">{submitting ? "…" : "→"}</span>
+                      {submitting ? t.submitting : shareMessage ? t.retry : t.submit}
                     </button>
+                    {shareMessage && (
+                      <>
+                        <p className="share-message error-message" aria-live="polite">
+                          {shareMessage}
+                        </p>
+                        <button
+                          className="download-button"
+                          onClick={downloadResult}
+                          type="button"
+                        >
+                          {t.download}
+                        </button>
+                      </>
+                    )}
                   </>
                 )}
                 <button
                   className="text-button"
-                  onClick={() => setShowFinish(false)}
+                  onClick={continueReview}
                   type="button"
                 >
                   {t.continue}

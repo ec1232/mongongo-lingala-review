@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "set_id": "lingala-v1-eval-draft-2026-07-29-v1",
+  "set_id": "lingala-v1-eval-prototype-2026-07-29-v1",
   "created_at": "2026-07-29",
   "language": "ln",
-  "status": "native_review_required",
+  "status": "prototype_native_review_required",
   "held_out": true,
   "training_use": "prohibited",
   "authorship": "Original project draft; not copied from a dataset or publication.",
-  "review_rule": "A fluent Lingala speaker must correct and approve at least 150 lines before the set can pass Phase 2.",
+  "review_rule": "A fluent Lingala speaker must review all 50 lines. At least 40 must be approved as written or with correction, with at least 5 accepted lines in every domain, before the private baseline phase.",
   "lines": [
     {
       "id": "LNG-001",
@@ -18,84 +18,12 @@
       "intent_en": "Hello, are you well today?"
     },
     {
-      "id": "LNG-002",
-      "domain": "everyday",
-      "difficulty": "easy",
-      "feature": "present progressive and market vocabulary",
-      "text": "Nazali kokende na zando kosomba mbuma mpe loso.",
-      "intent_en": "I am going to the market to buy fruit and rice."
-    },
-    {
       "id": "LNG-003",
       "domain": "everyday",
       "difficulty": "easy",
       "feature": "request and temperature adjective",
       "text": "Nalingi komela mai ya malili, s’il vous plaît.",
       "intent_en": "I would like to drink cold water, please."
-    },
-    {
-      "id": "LNG-004",
-      "domain": "everyday",
-      "difficulty": "easy",
-      "feature": "plural subject agreement",
-      "text": "Bana bazali kosakana na lopango.",
-      "intent_en": "The children are playing in the courtyard."
-    },
-    {
-      "id": "LNG-005",
-      "domain": "everyday",
-      "difficulty": "easy",
-      "feature": "food vocabulary",
-      "text": "Mama azali kolamba pondu na fufu mpo na libota.",
-      "intent_en": "Mother is cooking pondu and fufu for the family."
-    },
-    {
-      "id": "LNG-006",
-      "domain": "everyday",
-      "difficulty": "easy",
-      "feature": "future question and time of day",
-      "text": "Tokokutana lobi na ntɔngɔ?",
-      "intent_en": "Will we meet tomorrow morning?"
-    },
-    {
-      "id": "LNG-007",
-      "domain": "everyday",
-      "difficulty": "medium",
-      "feature": "cause and weather vocabulary",
-      "text": "Mbula enɔki mingi, yango wana nzela etondi na mai.",
-      "intent_en": "It rained heavily, so the road is full of water."
-    },
-    {
-      "id": "LNG-008",
-      "domain": "everyday",
-      "difficulty": "medium",
-      "feature": "imperative and sequence",
-      "text": "Kangá ekuke liboso obima na ndako.",
-      "intent_en": "Lock the door before you leave the house."
-    },
-    {
-      "id": "LNG-009",
-      "domain": "everyday",
-      "difficulty": "medium",
-      "feature": "past action and possession",
-      "text": "Moninga na biso adefaki kiti moko lobi.",
-      "intent_en": "Our neighbor borrowed one chair yesterday."
-    },
-    {
-      "id": "LNG-010",
-      "domain": "everyday",
-      "difficulty": "easy",
-      "feature": "polite request and quantity",
-      "text": "Okoki kopesa ngai mwa mungwa?",
-      "intent_en": "Can you give me a little salt?"
-    },
-    {
-      "id": "LNG-011",
-      "domain": "everyday",
-      "difficulty": "easy",
-      "feature": "electricity vocabulary and exclamation",
-      "text": "Talá, kura ezongi!",
-      "intent_en": "Look, the electricity is back!"
     },
     {
       "id": "LNG-012",
@@ -106,22 +34,6 @@
       "intent_en": "My phone died because the battery is empty."
     },
     {
-      "id": "LNG-013",
-      "domain": "everyday",
-      "difficulty": "medium",
-      "feature": "future action and public transport",
-      "text": "Bisi oyo etondi; tózela oyo ekolanda.",
-      "intent_en": "This bus is full; let us wait for the next one."
-    },
-    {
-      "id": "LNG-014",
-      "domain": "everyday",
-      "difficulty": "easy",
-      "feature": "negative imperative",
-      "text": "Mwana alali, kosala makɛlɛlɛ te.",
-      "intent_en": "The child is sleeping; do not make noise."
-    },
-    {
       "id": "LNG-015",
       "domain": "everyday",
       "difficulty": "medium",
@@ -130,108 +42,12 @@
       "intent_en": "I did not understand well; repeat it and speak slowly."
     },
     {
-      "id": "LNG-016",
-      "domain": "everyday",
-      "difficulty": "medium",
-      "feature": "route question",
-      "text": "Nzela nini ememaka na gare?",
-      "intent_en": "Which road leads to the station?"
-    },
-    {
-      "id": "LNG-017",
-      "domain": "everyday",
-      "difficulty": "medium",
-      "feature": "conditional and imperative",
-      "text": "Soki okómi kuna, bengá ngai mbala moko.",
-      "intent_en": "When you arrive there, call me immediately."
-    },
-    {
-      "id": "LNG-018",
-      "domain": "everyday",
-      "difficulty": "easy",
-      "feature": "location phrase",
-      "text": "Namoni bafungola na nse ya mesa.",
-      "intent_en": "I found the keys under the table."
-    },
-    {
-      "id": "LNG-019",
-      "domain": "everyday",
-      "difficulty": "medium",
-      "feature": "simultaneous actions",
-      "text": "Azali kosukola bilamba, mpe akokausa yango na libándá.",
-      "intent_en": "She is washing the clothes and will dry them outside."
-    },
-    {
-      "id": "LNG-020",
-      "domain": "everyday",
-      "difficulty": "easy",
-      "feature": "animal sound and location",
-      "text": "Mbwa ezali koganga pene na ekuke.",
-      "intent_en": "The dog is barking near the gate."
-    },
-    {
-      "id": "LNG-021",
-      "domain": "everyday",
-      "difficulty": "easy",
-      "feature": "desire and sequence",
-      "text": "Nsima ya mosala, nalingi kopema mwa moke.",
-      "intent_en": "After work, I want to rest for a while."
-    },
-    {
-      "id": "LNG-022",
-      "domain": "everyday",
-      "difficulty": "medium",
-      "feature": "inclusive imperative and distributive meaning",
-      "text": "Moto na moto amema saani na ye.",
-      "intent_en": "Everyone should bring their own plate."
-    },
-    {
       "id": "LNG-023",
       "domain": "everyday",
       "difficulty": "medium",
       "feature": "two-part question",
       "text": "Mpo na nini oyei retare? Mituka etɛlɛmaki na nzela?",
       "intent_en": "Why are you late? Was there traffic on the road?"
-    },
-    {
-      "id": "LNG-024",
-      "domain": "everyday",
-      "difficulty": "easy",
-      "feature": "preference and negation",
-      "text": "Nalingi ti na ngai ezala na sukali te.",
-      "intent_en": "I want my tea without sugar."
-    },
-    {
-      "id": "LNG-025",
-      "domain": "everyday",
-      "difficulty": "easy",
-      "feature": "habitual action and clock time",
-      "text": "Nalamukaka na ngonga ya motoba ntɔngɔ nyonso.",
-      "intent_en": "I wake up at six every morning."
-    },
-    {
-      "id": "LNG-026",
-      "domain": "everyday",
-      "difficulty": "medium",
-      "feature": "hortative and purpose",
-      "text": "Tópɛtola ndako liboso bapaya báya.",
-      "intent_en": "Let us clean the house before the guests arrive."
-    },
-    {
-      "id": "LNG-027",
-      "domain": "everyday",
-      "difficulty": "medium",
-      "feature": "past event and contrast",
-      "text": "Moto ya kopesa pakɛ ayaki, kasi moto moko te azalaki na ndako.",
-      "intent_en": "The delivery person came, but nobody was home."
-    },
-    {
-      "id": "LNG-028",
-      "domain": "everyday",
-      "difficulty": "medium",
-      "feature": "sensory description",
-      "text": "Nsolo ya bilei oyo ezali kobima na kuku ezali kitoko.",
-      "intent_en": "The smell of the food coming from the kitchen is pleasant."
     },
     {
       "id": "LNG-029",
@@ -258,116 +74,12 @@
       "intent_en": "Open your books to page ten."
     },
     {
-      "id": "LNG-032",
-      "domain": "education",
-      "difficulty": "easy",
-      "feature": "alphabet and spelling",
-      "text": "Komá nkombo na yo, mpe tangá lɛtrɛ mokomoko.",
-      "intent_en": "Write your name and read each letter."
-    },
-    {
-      "id": "LNG-033",
-      "domain": "education",
-      "difficulty": "medium",
-      "feature": "comprehension question",
-      "text": "Likanisi ya ntina na lisolo oyo ezali nini?",
-      "intent_en": "What is the main idea of this story?"
-    },
-    {
-      "id": "LNG-034",
-      "domain": "education",
-      "difficulty": "easy",
-      "feature": "homework and deadline",
-      "text": "Bosengeli kosilisa devuá liboso ya lobi.",
-      "intent_en": "You must finish the homework before tomorrow."
-    },
-    {
       "id": "LNG-035",
       "domain": "education",
       "difficulty": "medium",
       "feature": "arithmetic question",
       "text": "Soki obakisi mitano na nsambo, okozwa boni?",
       "intent_en": "If you add five and seven, what do you get?"
-    },
-    {
-      "id": "LNG-036",
-      "domain": "education",
-      "difficulty": "medium",
-      "feature": "science explanation",
-      "text": "Mai ekómaka mótɔ mpe ebongwanaka mopɛpɛ ntango etɔki.",
-      "intent_en": "Water becomes hot and turns into vapor when it boils."
-    },
-    {
-      "id": "LNG-037",
-      "domain": "education",
-      "difficulty": "easy",
-      "feature": "turn-taking question",
-      "text": "Nani akoki koyanola na motuna oyo?",
-      "intent_en": "Who can answer this question?"
-    },
-    {
-      "id": "LNG-038",
-      "domain": "education",
-      "difficulty": "medium",
-      "feature": "comparison",
-      "text": "Kokanisá biyano mibale mpe monisá bokeseni na yango.",
-      "intent_en": "Compare the two answers and show their differences."
-    },
-    {
-      "id": "LNG-039",
-      "domain": "education",
-      "difficulty": "medium",
-      "feature": "group-work instruction",
-      "text": "Bósala na bituluku ya bato minei mpe bókabola makanisi.",
-      "intent_en": "Work in groups of four and share ideas."
-    },
-    {
-      "id": "LNG-040",
-      "domain": "education",
-      "difficulty": "hard",
-      "feature": "definition and relative clause",
-      "text": "Liloba ya sika ezali liloba oyo toyebi naino ndimbola na yango te.",
-      "intent_en": "A new word is a word whose meaning we do not yet know."
-    },
-    {
-      "id": "LNG-041",
-      "domain": "education",
-      "difficulty": "easy",
-      "feature": "reading aloud",
-      "text": "Tangá fraze oyo na mongongo makasi.",
-      "intent_en": "Read this sentence aloud."
-    },
-    {
-      "id": "LNG-042",
-      "domain": "education",
-      "difficulty": "medium",
-      "feature": "correction request",
-      "text": "Soki omoni libunga, bongisá yango na motó ya makomi.",
-      "intent_en": "If you see an error, correct it in the written text."
-    },
-    {
-      "id": "LNG-043",
-      "domain": "education",
-      "difficulty": "medium",
-      "feature": "historical sequence",
-      "text": "Tyá makambo oyo na molɔngɔ oyo esalemaki.",
-      "intent_en": "Put these events in the order in which they happened."
-    },
-    {
-      "id": "LNG-044",
-      "domain": "education",
-      "difficulty": "hard",
-      "feature": "reasoned answer and causal connector",
-      "text": "Pesá eyano na yo, mpe limbolá mpo na nini okanisi ete ezali ya solo.",
-      "intent_en": "Give your answer and explain why you think it is correct."
-    },
-    {
-      "id": "LNG-045",
-      "domain": "education",
-      "difficulty": "medium",
-      "feature": "map directions",
-      "text": "Na karte, luká ebale oyo eleki pene na engumba.",
-      "intent_en": "On the map, find the river that passes near the city."
     },
     {
       "id": "LNG-046",
@@ -378,38 +90,6 @@
       "intent_en": "The teacher sent the lesson to the school computer."
     },
     {
-      "id": "LNG-047",
-      "domain": "education",
-      "difficulty": "easy",
-      "feature": "permission question",
-      "text": "Nakoki kotuna motuna moko?",
-      "intent_en": "May I ask a question?"
-    },
-    {
-      "id": "LNG-048",
-      "domain": "education",
-      "difficulty": "medium",
-      "feature": "memory and repetition",
-      "text": "Zongelá maloba yango mbala misato mpo okanga yango na motó.",
-      "intent_en": "Repeat those words three times so that you remember them."
-    },
-    {
-      "id": "LNG-049",
-      "domain": "education",
-      "difficulty": "medium",
-      "feature": "cause and effect",
-      "text": "Nini esalemaki nsima ya mopɛpɛ makasi?",
-      "intent_en": "What happened after the strong wind?"
-    },
-    {
-      "id": "LNG-050",
-      "domain": "education",
-      "difficulty": "hard",
-      "feature": "conditional academic instruction",
-      "text": "Soki oyebi eyano te, talá ndakisa mpe meká kosala yo moko.",
-      "intent_en": "If you do not know the answer, look at the example and then try by yourself."
-    },
-    {
       "id": "LNG-051",
       "domain": "education",
       "difficulty": "medium",
@@ -418,28 +98,12 @@
       "intent_en": "This word is not pronounced the same way in Lingala and French."
     },
     {
-      "id": "LNG-052",
-      "domain": "education",
-      "difficulty": "easy",
-      "feature": "encouragement and exclamation",
-      "text": "Osali malamu—kobá kaka!",
-      "intent_en": "You did well—keep going!"
-    },
-    {
       "id": "LNG-053",
       "domain": "education",
       "difficulty": "hard",
       "feature": "multi-clause oral presentation instruction",
       "text": "Liboso oloba liboso ya kelasi, bongisá makanisi na yo, lobá polele, mpe pesá ndakisa moko.",
       "intent_en": "Before speaking to the class, organize your ideas, speak clearly, and give one example."
-    },
-    {
-      "id": "LNG-054",
-      "domain": "education",
-      "difficulty": "medium",
-      "feature": "punctuation terminology",
-      "text": "Tyá elembo ya motuna na nsuka ya fraze.",
-      "intent_en": "Put a question mark at the end of the sentence."
     },
     {
       "id": "LNG-055",
@@ -458,76 +122,12 @@
       "intent_en": "One day, a child saw a small bird on the road."
     },
     {
-      "id": "LNG-057",
-      "domain": "story",
-      "difficulty": "medium",
-      "feature": "setting and weather",
-      "text": "Na mpokwa wana, mapata ezipaki likoló mpe mbula ebandaki.",
-      "intent_en": "That evening, clouds covered the sky and rain began."
-    },
-    {
-      "id": "LNG-058",
-      "domain": "story",
-      "difficulty": "medium",
-      "feature": "reported speech",
-      "text": "Nkoko alobaki ete asengeli kozonga liboso molili ekɔta.",
-      "intent_en": "Grandmother said that she had to return before darkness fell."
-    },
-    {
-      "id": "LNG-059",
-      "domain": "story",
-      "difficulty": "medium",
-      "feature": "sequence of actions",
-      "text": "Mobali afungolaki sanduku, atalaki na kati, mpe akamwaki.",
-      "intent_en": "The man opened the box, looked inside, and was surprised."
-    },
-    {
-      "id": "LNG-060",
-      "domain": "story",
-      "difficulty": "hard",
-      "feature": "suspense question",
-      "text": "Kasi nani nde azalaki kolanda bango na mosika?",
-      "intent_en": "But who was following them from a distance?"
-    },
-    {
-      "id": "LNG-061",
-      "domain": "story",
-      "difficulty": "easy",
-      "feature": "movement and location",
-      "text": "Bana bakimaki kino na nse ya nzete monene.",
-      "intent_en": "The children ran as far as the large tree."
-    },
-    {
-      "id": "LNG-062",
-      "domain": "story",
-      "difficulty": "medium",
-      "feature": "sound description",
-      "text": "Bayokaki lokito moko ya kokamwa uta na sima ya ndako.",
-      "intent_en": "They heard a strange sound from behind the house."
-    },
-    {
       "id": "LNG-063",
       "domain": "story",
       "difficulty": "medium",
       "feature": "dialogue",
       "text": "“Kobanga te,” ndeko na ye alobaki, “nazali awa.”",
       "intent_en": "'Do not be afraid,' her sibling said, 'I am here.'"
-    },
-    {
-      "id": "LNG-064",
-      "domain": "story",
-      "difficulty": "easy",
-      "feature": "river and object vocabulary",
-      "text": "Masuwa ya moke ezalaki kotambola malɛmbɛ na ebale.",
-      "intent_en": "A small boat was moving slowly on the river."
-    },
-    {
-      "id": "LNG-065",
-      "domain": "story",
-      "difficulty": "medium",
-      "feature": "contrast and decision",
-      "text": "Alingaki kotikala, kasi nsukansuka azwaki ekateli ya kokende.",
-      "intent_en": "She wanted to stay, but eventually decided to leave."
     },
     {
       "id": "LNG-066",
@@ -538,54 +138,6 @@
       "intent_en": "When the sun rose, the city woke to the sounds of cars, vendors, and children going to school."
     },
     {
-      "id": "LNG-067",
-      "domain": "story",
-      "difficulty": "medium",
-      "feature": "discovery and emotion",
-      "text": "Na kati ya buku ya kala, amonaki fɔtɔ ya libota na bango.",
-      "intent_en": "Inside the old book, he found a photograph of their family."
-    },
-    {
-      "id": "LNG-068",
-      "domain": "story",
-      "difficulty": "medium",
-      "feature": "purpose clause",
-      "text": "Abombaki mokanda na esika ya malamu mpo moto moko amona yango te.",
-      "intent_en": "She hid the letter in a safe place so nobody would see it."
-    },
-    {
-      "id": "LNG-069",
-      "domain": "story",
-      "difficulty": "easy",
-      "feature": "animal action",
-      "text": "Ntaba moko elongwaki na etonga mpe ekɔtaki na elanga.",
-      "intent_en": "A goat left the herd and entered the field."
-    },
-    {
-      "id": "LNG-070",
-      "domain": "story",
-      "difficulty": "hard",
-      "feature": "conditional narrative",
-      "text": "Soki balekaki mwa miniti mosusu, balingaki komona engbunduka ezali kokende.",
-      "intent_en": "If they had waited a few more minutes, they would have seen the train leaving."
-    },
-    {
-      "id": "LNG-071",
-      "domain": "story",
-      "difficulty": "medium",
-      "feature": "unexpected interruption",
-      "text": "Na mbalakaka, mwinda ekufaki mpe ndako mobimba ekómaki molili.",
-      "intent_en": "Suddenly, the light went out and the whole house became dark."
-    },
-    {
-      "id": "LNG-072",
-      "domain": "story",
-      "difficulty": "medium",
-      "feature": "search and result",
-      "text": "Balukaki mwana bisika nyonso, mpe nsukansuka bamonaki ye na bibliotɛkɛ.",
-      "intent_en": "They searched everywhere for the child and finally found him in the library."
-    },
-    {
       "id": "LNG-073",
       "domain": "story",
       "difficulty": "hard",
@@ -594,52 +146,12 @@
       "intent_en": "'I... do not know,' she said quietly."
     },
     {
-      "id": "LNG-074",
-      "domain": "story",
-      "difficulty": "medium",
-      "feature": "time transition",
-      "text": "Mikolo misato na nsima, sango moko ya esengo ekómaki.",
-      "intent_en": "Three days later, some good news arrived."
-    },
-    {
-      "id": "LNG-075",
-      "domain": "story",
-      "difficulty": "easy",
-      "feature": "giving and gratitude",
-      "text": "Mobange apesaki mwana mbuma moko, mpe mwana apesaki ye matɔndi.",
-      "intent_en": "The elderly person gave the child a fruit, and the child thanked them."
-    },
-    {
-      "id": "LNG-076",
-      "domain": "story",
-      "difficulty": "hard",
-      "feature": "relative clause and memory",
-      "text": "Nzete oyo nkoko alonaki ntango azalaki elenge ekolaki mingi.",
-      "intent_en": "The tree that grandfather planted when he was young had grown tall."
-    },
-    {
-      "id": "LNG-077",
-      "domain": "story",
-      "difficulty": "medium",
-      "feature": "question in dialogue",
-      "text": "Mwana atunaki: “Tokokóma kuna liboso ya mpokwa?”",
-      "intent_en": "The child asked, 'Will we arrive there before evening?'"
-    },
-    {
       "id": "LNG-078",
       "domain": "story",
       "difficulty": "medium",
       "feature": "smell and memory",
       "text": "Nsolo ya mampa ya sika ekundwelaki ye ndako ya bomwana.",
       "intent_en": "The smell of fresh bread reminded her of her childhood home."
-    },
-    {
-      "id": "LNG-079",
-      "domain": "story",
-      "difficulty": "hard",
-      "feature": "contrastive ending",
-      "text": "Bakanisaki ete mobembo esili, nzokande eteni ya mpasi ezalaki naino liboso.",
-      "intent_en": "They thought the journey was over, but the difficult part was still ahead."
     },
     {
       "id": "LNG-080",
@@ -658,44 +170,12 @@
       "intent_en": "Press 1 for Lingala or 2 for French."
     },
     {
-      "id": "LNG-082",
-      "domain": "customer_support",
-      "difficulty": "easy",
-      "feature": "holding instruction",
-      "text": "Svp, zelá; mosungi moko akoyanola yo noki.",
-      "intent_en": "Please wait; an agent will answer you shortly."
-    },
-    {
-      "id": "LNG-083",
-      "domain": "customer_support",
-      "difficulty": "medium",
-      "feature": "order-number request",
-      "text": "Pesá nimero ya komande na yo mpo tóluka yango.",
-      "intent_en": "Provide your order number so that we can find it."
-    },
-    {
       "id": "LNG-084",
       "domain": "customer_support",
       "difficulty": "medium",
       "feature": "identity confirmation",
       "text": "Mpo na kobatela kɔnti na yo, tosengeli kondimisa nkombo mpe dati ya mbotama.",
       "intent_en": "To protect your account, we must confirm your name and date of birth."
-    },
-    {
-      "id": "LNG-085",
-      "domain": "customer_support",
-      "difficulty": "easy",
-      "feature": "apology and delay",
-      "text": "Bolimbisi, komande na yo ezwi retare.",
-      "intent_en": "Sorry, your order has been delayed."
-    },
-    {
-      "id": "LNG-086",
-      "domain": "customer_support",
-      "difficulty": "medium",
-      "feature": "refund question",
-      "text": "Olingi kozwa mbongo na yo lisusu, to kopona eloko mosusu?",
-      "intent_en": "Would you like a refund or to choose another item?"
     },
     {
       "id": "LNG-087",
@@ -706,38 +186,6 @@
       "intent_en": "Open the message we sent you to change your password."
     },
     {
-      "id": "LNG-088",
-      "domain": "customer_support",
-      "difficulty": "easy",
-      "feature": "connection check",
-      "text": "Talá soki aparɛyi na yo ezali na connexion ya internet.",
-      "intent_en": "Check whether your device has an internet connection."
-    },
-    {
-      "id": "LNG-089",
-      "domain": "customer_support",
-      "difficulty": "medium",
-      "feature": "restart instruction",
-      "text": "Kangá programɛ, fungolá yango lisusu, mpe meká mbala ya mibale.",
-      "intent_en": "Close the application, reopen it, and try again."
-    },
-    {
-      "id": "LNG-090",
-      "domain": "customer_support",
-      "difficulty": "medium",
-      "feature": "delivery status",
-      "text": "Pakɛ na yo ebimi na depo mpe ezali koya epai na yo.",
-      "intent_en": "Your parcel has left the warehouse and is on its way to you."
-    },
-    {
-      "id": "LNG-091",
-      "domain": "customer_support",
-      "difficulty": "easy",
-      "feature": "service-hours question",
-      "text": "Biro na bino efungwamaka ngonga nini?",
-      "intent_en": "What time does your office open?"
-    },
-    {
       "id": "LNG-092",
       "domain": "customer_support",
       "difficulty": "hard",
@@ -746,100 +194,12 @@
       "intent_en": "Unplug the device, wait thirty seconds, and connect it again."
     },
     {
-      "id": "LNG-093",
-      "domain": "customer_support",
-      "difficulty": "medium",
-      "feature": "payment failure",
-      "text": "Lifuti na yo eleki te; tala soki makambo ya karte ezali malamu.",
-      "intent_en": "Your payment did not go through; check whether the card details are correct."
-    },
-    {
-      "id": "LNG-094",
-      "domain": "customer_support",
-      "difficulty": "medium",
-      "feature": "address confirmation",
-      "text": "Okoki kondimisa adrese oyo tokotinda pakɛ?",
-      "intent_en": "Can you confirm the address where we should send the parcel?"
-    },
-    {
-      "id": "LNG-095",
-      "domain": "customer_support",
-      "difficulty": "easy",
-      "feature": "callback promise",
-      "text": "Tokobenga yo lisusu lelo na mpokwa.",
-      "intent_en": "We will call you again this evening."
-    },
-    {
-      "id": "LNG-096",
-      "domain": "customer_support",
-      "difficulty": "medium",
-      "feature": "ticket creation",
-      "text": "Tofungoli dosye mpo na likambo na yo.",
-      "intent_en": "We opened a support case for your issue."
-    },
-    {
-      "id": "LNG-097",
-      "domain": "customer_support",
-      "difficulty": "medium",
-      "feature": "reference code",
-      "text": "Bomba kode oyo; ekosalisa yo soki obengi lisusu.",
-      "intent_en": "Keep this code; it will help you if you call again."
-    },
-    {
       "id": "LNG-098",
       "domain": "customer_support",
       "difficulty": "hard",
       "feature": "clarification question",
       "text": "Likambo esalemaka ntango nyonso, to kaka ntango ofungoli programɛ?",
       "intent_en": "Does the problem happen all the time or only when you open the application?"
-    },
-    {
-      "id": "LNG-099",
-      "domain": "customer_support",
-      "difficulty": "easy",
-      "feature": "gratitude and closing",
-      "text": "Matɔndi mpo na kobenga biso; mokolo malamu.",
-      "intent_en": "Thank you for calling us; have a good day."
-    },
-    {
-      "id": "LNG-100",
-      "domain": "customer_support",
-      "difficulty": "medium",
-      "feature": "choice question",
-      "text": "Olingi tóyebisa yo na SMS to na e-mail?",
-      "intent_en": "Would you like us to notify you by SMS or email?"
-    },
-    {
-      "id": "LNG-101",
-      "domain": "customer_support",
-      "difficulty": "hard",
-      "feature": "formal service explanation",
-      "text": "Soki osengi koboma kɔnti, makambo na yo ekolongwa nsima ya eleko oyo mobeko esɛngi.",
-      "intent_en": "If you request account deletion, your information will be removed after the legally required period."
-    },
-    {
-      "id": "LNG-102",
-      "domain": "customer_support",
-      "difficulty": "medium",
-      "feature": "unavailable item",
-      "text": "Eloko oyo ezali lisusu na stok te, kasi ekoki kozonga pɔsɔ ekoya.",
-      "intent_en": "This item is out of stock, but it may return next week."
-    },
-    {
-      "id": "LNG-103",
-      "domain": "customer_support",
-      "difficulty": "medium",
-      "feature": "damaged parcel report",
-      "text": "Soki pakɛ ebebi, zwá fɔtɔ mpe tindelá biso yango.",
-      "intent_en": "If the parcel is damaged, take a photo and send it to us."
-    },
-    {
-      "id": "LNG-104",
-      "domain": "customer_support",
-      "difficulty": "hard",
-      "feature": "status update with contrast",
-      "text": "Tosili kozwa mokanda na yo, kasi tozali naino kozela eyano ya kompanyi ya transport.",
-      "intent_en": "We received your message, but we are still waiting for the transport company's response."
     },
     {
       "id": "LNG-105",
@@ -858,36 +218,12 @@
       "intent_en": "Wash your hands with soap and clean water."
     },
     {
-      "id": "LNG-107",
-      "domain": "public_health",
-      "difficulty": "easy",
-      "feature": "hydration advice",
-      "text": "Melá mai mingi ntango moi ezali makasi.",
-      "intent_en": "Drink plenty of water when it is very hot."
-    },
-    {
       "id": "LNG-108",
       "domain": "public_health",
       "difficulty": "medium",
       "feature": "symptom escalation",
       "text": "Soki mpema ezali kokata yo, luká lisalisi ya monganga noki.",
       "intent_en": "If you have difficulty breathing, seek medical help quickly."
-    },
-    {
-      "id": "LNG-109",
-      "domain": "public_health",
-      "difficulty": "medium",
-      "feature": "medicine label instruction",
-      "text": "Tangá makomi ya nkisi mpe landá malako ya monganga.",
-      "intent_en": "Read the medicine label and follow the clinician's instructions."
-    },
-    {
-      "id": "LNG-110",
-      "domain": "public_health",
-      "difficulty": "easy",
-      "feature": "food safety",
-      "text": "Lambá bilei malamu liboso ya kolia yango.",
-      "intent_en": "Cook food thoroughly before eating it."
     },
     {
       "id": "LNG-111",
@@ -898,100 +234,12 @@
       "intent_en": "If a child has a fever, monitor their temperature and call a clinician if it rises."
     },
     {
-      "id": "LNG-112",
-      "domain": "public_health",
-      "difficulty": "easy",
-      "feature": "cough etiquette",
-      "text": "Zipá monɔkɔ mpe zolo na litindi ntango ozali kosukosu.",
-      "intent_en": "Cover your mouth and nose with your elbow when coughing."
-    },
-    {
-      "id": "LNG-113",
-      "domain": "public_health",
-      "difficulty": "medium",
-      "feature": "vaccination appointment",
-      "text": "Memá karte ya vaksɛ́ na mokolo ya rendez-vous.",
-      "intent_en": "Bring the vaccination card on the appointment day."
-    },
-    {
-      "id": "LNG-114",
-      "domain": "public_health",
-      "difficulty": "medium",
-      "feature": "safe water",
-      "text": "Soki mai ezali ya ntembe, tɔkisá yango liboso ya komela.",
-      "intent_en": "If the water may be unsafe, boil it before drinking."
-    },
-    {
-      "id": "LNG-115",
-      "domain": "public_health",
-      "difficulty": "easy",
-      "feature": "rest and recovery",
-      "text": "Pemá malamu mpe kolia bilei ya ndenge na ndenge.",
-      "intent_en": "Rest well and eat a varied diet."
-    },
-    {
-      "id": "LNG-116",
-      "domain": "public_health",
-      "difficulty": "medium",
-      "feature": "prescription warning",
-      "text": "Kopesa nkisi na moto mosusu te soki monganga apesi ye yango te.",
-      "intent_en": "Do not give medicine to someone for whom it was not prescribed."
-    },
-    {
-      "id": "LNG-117",
-      "domain": "public_health",
-      "difficulty": "medium",
-      "feature": "appointment preparation",
-      "text": "Komá mituna na yo liboso okende epai ya monganga.",
-      "intent_en": "Write down your questions before going to the clinician."
-    },
-    {
       "id": "LNG-118",
       "domain": "public_health",
       "difficulty": "hard",
       "feature": "emergency instruction with alternatives",
       "text": "Soki moto azangi mayele to azali kopema te, benga nimero ya lisungi ya lombangu mpe landá malako oyo bakopesa yo.",
       "intent_en": "If someone is unconscious or not breathing, call the emergency number and follow the instructions given."
-    },
-    {
-      "id": "LNG-119",
-      "domain": "public_health",
-      "difficulty": "medium",
-      "feature": "mosquito prevention",
-      "text": "Lalá na nse ya moustiquaire mpo na kokitisa likama ya malaria.",
-      "intent_en": "Sleep under a mosquito net to reduce the risk of malaria."
-    },
-    {
-      "id": "LNG-120",
-      "domain": "public_health",
-      "difficulty": "easy",
-      "feature": "clean environment",
-      "text": "Longolá mai oyo etɛlɛmi pene na ndako.",
-      "intent_en": "Remove standing water near the house."
-    },
-    {
-      "id": "LNG-121",
-      "domain": "public_health",
-      "difficulty": "medium",
-      "feature": "medicine timing",
-      "text": "Zwá nkisi na ngonga oyo bakomeli yo, mpe koleka dose te.",
-      "intent_en": "Take the medicine at the prescribed time and do not exceed the dose."
-    },
-    {
-      "id": "LNG-122",
-      "domain": "public_health",
-      "difficulty": "medium",
-      "feature": "mental wellbeing",
-      "text": "Soki mitungisi eleki makasi, sololá na moto oyo otyelaka motema.",
-      "intent_en": "If worry becomes overwhelming, talk to someone you trust."
-    },
-    {
-      "id": "LNG-123",
-      "domain": "public_health",
-      "difficulty": "easy",
-      "feature": "clinic location question",
-      "text": "Esika ya bokolongono oyo ezali pene ezali wapi?",
-      "intent_en": "Where is the nearest health center?"
     },
     {
       "id": "LNG-124",
@@ -1002,52 +250,12 @@
       "intent_en": "When did the pain begin, and is it getting stronger or weaker?"
     },
     {
-      "id": "LNG-125",
-      "domain": "public_health",
-      "difficulty": "medium",
-      "feature": "allergy question",
-      "text": "Ozali na allergie na nkisi to na bilei moko boye?",
-      "intent_en": "Are you allergic to any medicine or food?"
-    },
-    {
-      "id": "LNG-126",
-      "domain": "public_health",
-      "difficulty": "medium",
-      "feature": "child safety",
-      "text": "Bomba bankisi mosika na mabɔkɔ ya bana.",
-      "intent_en": "Keep medicines out of children's reach."
-    },
-    {
-      "id": "LNG-127",
-      "domain": "public_health",
-      "difficulty": "hard",
-      "feature": "public notice with contrast",
-      "text": "Kliniki ezali kofungwama lelo, kasi service ya laboratware ekobanda kaka na nsima ya nzanga.",
-      "intent_en": "The clinic is open today, but laboratory service will begin only in the afternoon."
-    },
-    {
-      "id": "LNG-128",
-      "domain": "public_health",
-      "difficulty": "medium",
-      "feature": "follow-up instruction",
-      "text": "Zongá na lopitalo soki bilembo ebongi te nsima ya mikolo mibale.",
-      "intent_en": "Return to the hospital if the symptoms do not improve after two days."
-    },
-    {
       "id": "LNG-129",
       "domain": "public_health",
       "difficulty": "easy",
       "feature": "consent question",
       "text": "Ondimi ete monganga atalá yo sikoyo?",
       "intent_en": "Do you agree to be examined by the clinician now?"
-    },
-    {
-      "id": "LNG-130",
-      "domain": "public_health",
-      "difficulty": "hard",
-      "feature": "balanced health disclaimer",
-      "text": "Sango oyo ezali mpo na koyebisa yo kaka; ekoki kozwa esika ya toli ya monganga te.",
-      "intent_en": "This information is for guidance only; it cannot replace medical advice."
     },
     {
       "id": "LNG-131",
@@ -1058,36 +266,12 @@
       "intent_en": "All the items cost 15,750 Congolese francs."
     },
     {
-      "id": "LNG-132",
-      "domain": "numbers_dates_currency",
-      "difficulty": "medium",
-      "feature": "decimal comma and euro",
-      "text": "Tike moko ezali 12,50 €.",
-      "intent_en": "One ticket costs twelve euros and fifty cents."
-    },
-    {
-      "id": "LNG-133",
-      "domain": "numbers_dates_currency",
-      "difficulty": "medium",
-      "feature": "slash date",
-      "text": "Abotamaki na 03/11/1998.",
-      "intent_en": "The person was born on 3 November 1998."
-    },
-    {
       "id": "LNG-134",
       "domain": "numbers_dates_currency",
       "difficulty": "medium",
       "feature": "written month and clock time",
       "text": "Rendez-vous na yo ezali mokolo ya 14 août 2026 na 09:30.",
       "intent_en": "Your appointment is on 14 August 2026 at 09:30."
-    },
-    {
-      "id": "LNG-135",
-      "domain": "numbers_dates_currency",
-      "difficulty": "medium",
-      "feature": "train number and departure time",
-      "text": "Engbunduka 407 ekobima na 18:45.",
-      "intent_en": "Train 407 will depart at 18:45."
     },
     {
       "id": "LNG-136",
@@ -1098,52 +282,12 @@
       "intent_en": "Call the Belgian telephone number plus thirty-two, two, five-five-five, zero-one, zero-nine."
     },
     {
-      "id": "LNG-137",
-      "domain": "numbers_dates_currency",
-      "difficulty": "medium",
-      "feature": "percentage",
-      "text": "Ntalo ekiti na 15%.",
-      "intent_en": "The price decreased by fifteen percent."
-    },
-    {
       "id": "LNG-138",
       "domain": "numbers_dates_currency",
       "difficulty": "hard",
       "feature": "decimal temperature and unit",
       "text": "Molunge ya nzoto ezali 37,8 °C.",
       "intent_en": "The body temperature is 37.8 degrees Celsius."
-    },
-    {
-      "id": "LNG-139",
-      "domain": "numbers_dates_currency",
-      "difficulty": "hard",
-      "feature": "decimal weight and unit",
-      "text": "Saki oyo ezali kilo 2,75.",
-      "intent_en": "This bag weighs 2.75 kilograms."
-    },
-    {
-      "id": "LNG-140",
-      "domain": "numbers_dates_currency",
-      "difficulty": "medium",
-      "feature": "currency symbol before number",
-      "text": "Abomba $25 mpo na mobembo.",
-      "intent_en": "She saved twenty-five dollars for the journey."
-    },
-    {
-      "id": "LNG-141",
-      "domain": "numbers_dates_currency",
-      "difficulty": "hard",
-      "feature": "large number",
-      "text": "Proje yango esɛngi 1 000 000 FC.",
-      "intent_en": "The project requires one million Congolese francs."
-    },
-    {
-      "id": "LNG-142",
-      "domain": "numbers_dates_currency",
-      "difficulty": "medium",
-      "feature": "time range with en dash",
-      "text": "Biro efungwami kobanda 08:00–17:30.",
-      "intent_en": "The office is open from 08:00 to 17:30."
     },
     {
       "id": "LNG-143",
@@ -1154,132 +298,12 @@
       "intent_en": "The journey will last two hours and twenty minutes."
     },
     {
-      "id": "LNG-144",
-      "domain": "numbers_dates_currency",
-      "difficulty": "hard",
-      "feature": "fraction",
-      "text": "Bakaboli limpa na 1/2 mpo na mwana mokomoko.",
-      "intent_en": "They divided the bread into halves for each child."
-    },
-    {
-      "id": "LNG-145",
-      "domain": "numbers_dates_currency",
-      "difficulty": "medium",
-      "feature": "floor number and ordinal meaning",
-      "text": "Biro ezali na etaje ya 3.",
-      "intent_en": "The office is on the third floor."
-    },
-    {
-      "id": "LNG-146",
-      "domain": "numbers_dates_currency",
-      "difficulty": "medium",
-      "feature": "alphanumeric room identifier",
-      "text": "Kɔtá na porte 8B.",
-      "intent_en": "Enter through door 8B."
-    },
-    {
-      "id": "LNG-147",
-      "domain": "numbers_dates_currency",
-      "difficulty": "hard",
-      "feature": "date range",
-      "text": "Rapɔr etali bambula 2024–2026.",
-      "intent_en": "The report covers the years 2024 to 2026."
-    },
-    {
-      "id": "LNG-148",
-      "domain": "numbers_dates_currency",
-      "difficulty": "medium",
-      "feature": "count and unit",
-      "text": "Tozali na bakilo 48 ya loso.",
-      "intent_en": "We have forty-eight kilograms of rice."
-    },
-    {
       "id": "LNG-149",
       "domain": "numbers_dates_currency",
       "difficulty": "hard",
       "feature": "multiple monetary values",
       "text": "Afutaki 20 000 FC, mpe bazongiselaki ye 3 500 FC.",
       "intent_en": "He paid 20,000 Congolese francs and received 3,500 francs in change."
-    },
-    {
-      "id": "LNG-150",
-      "domain": "numbers_dates_currency",
-      "difficulty": "medium",
-      "feature": "day and calendar date",
-      "text": "Likita ekosalema mokolo ya yambo, 5 octobre.",
-      "intent_en": "The meeting will take place on Monday, 5 October."
-    },
-    {
-      "id": "LNG-151",
-      "domain": "numbers_dates_currency",
-      "difficulty": "hard",
-      "feature": "version number",
-      "text": "Programɛ ya sika ezali version 2.1.4.",
-      "intent_en": "The new application is version 2.1.4."
-    },
-    {
-      "id": "LNG-152",
-      "domain": "numbers_dates_currency",
-      "difficulty": "medium",
-      "feature": "distance unit",
-      "text": "Lopitalo ezali na kilomɛtrɛ 6 uta awa.",
-      "intent_en": "The hospital is six kilometers from here."
-    },
-    {
-      "id": "LNG-153",
-      "domain": "numbers_dates_currency",
-      "difficulty": "hard",
-      "feature": "measurement dimensions",
-      "text": "Mesa ezali na 120 cm na 75 cm.",
-      "intent_en": "The table measures 120 centimeters by 75 centimeters."
-    },
-    {
-      "id": "LNG-154",
-      "domain": "numbers_dates_currency",
-      "difficulty": "medium",
-      "feature": "age",
-      "text": "Lelo akokisi mibu 18.",
-      "intent_en": "Today the person turns eighteen."
-    },
-    {
-      "id": "LNG-155",
-      "domain": "numbers_dates_currency",
-      "difficulty": "hard",
-      "feature": "percentage with decimal",
-      "text": "Interɛ ezali 7,5% na mbula.",
-      "intent_en": "The interest rate is 7.5 percent per year."
-    },
-    {
-      "id": "LNG-156",
-      "domain": "numbers_dates_currency",
-      "difficulty": "medium",
-      "feature": "countdown",
-      "text": "Tokobanda na 3, 2, 1… sikoyo!",
-      "intent_en": "We will start in three, two, one... now!"
-    },
-    {
-      "id": "LNG-157",
-      "domain": "numbers_dates_currency",
-      "difficulty": "hard",
-      "feature": "account number grouping",
-      "text": "Nimero ya dosye ezali 2026-07-184.",
-      "intent_en": "The case number is 2026-07-184."
-    },
-    {
-      "id": "LNG-158",
-      "domain": "numbers_dates_currency",
-      "difficulty": "medium",
-      "feature": "quantity range",
-      "text": "Bato 25 kino 30 bakoki kokɔta na ndako oyo.",
-      "intent_en": "Between twenty-five and thirty people can enter this room."
-    },
-    {
-      "id": "LNG-159",
-      "domain": "numbers_dates_currency",
-      "difficulty": "hard",
-      "feature": "zero and decimal precision",
-      "text": "Emekeli emonisi 0,05 litre.",
-      "intent_en": "The measurement shows 0.05 liters."
     },
     {
       "id": "LNG-160",
@@ -1298,68 +322,12 @@
       "intent_en": "Chantal Mbuyi will welcome you at the entrance."
     },
     {
-      "id": "LNG-162",
-      "domain": "names_addresses",
-      "difficulty": "medium",
-      "feature": "Congolese personal name",
-      "text": "Patrick Ilunga atindi mokanda na ye.",
-      "intent_en": "Patrick Ilunga sent his letter."
-    },
-    {
-      "id": "LNG-163",
-      "domain": "names_addresses",
-      "difficulty": "medium",
-      "feature": "Congolese personal names",
-      "text": "Mado Nsimba akokutana na Serge Kasongo.",
-      "intent_en": "Mado Nsimba will meet Serge Kasongo."
-    },
-    {
-      "id": "LNG-164",
-      "domain": "names_addresses",
-      "difficulty": "hard",
-      "feature": "accented international name",
-      "text": "José Manuel azali koya uta Madrid.",
-      "intent_en": "José Manuel is coming from Madrid."
-    },
-    {
       "id": "LNG-165",
       "domain": "names_addresses",
       "difficulty": "hard",
       "feature": "French diacritics",
       "text": "François Noël akomaki liboso ya midi.",
       "intent_en": "François Noël arrived before noon."
-    },
-    {
-      "id": "LNG-166",
-      "domain": "names_addresses",
-      "difficulty": "hard",
-      "feature": "international personal name",
-      "text": "Aïcha Ben Salah azali kozela na réception.",
-      "intent_en": "Aïcha Ben Salah is waiting at reception."
-    },
-    {
-      "id": "LNG-167",
-      "domain": "names_addresses",
-      "difficulty": "hard",
-      "feature": "East Asian name",
-      "text": "Zhang Wei apesi eyano na e-mail.",
-      "intent_en": "Zhang Wei answered the email."
-    },
-    {
-      "id": "LNG-168",
-      "domain": "names_addresses",
-      "difficulty": "hard",
-      "feature": "Vietnamese diacritics",
-      "text": "Nguyễn An akosala lisolo mokuse.",
-      "intent_en": "Nguyễn An will give a short presentation."
-    },
-    {
-      "id": "LNG-169",
-      "domain": "names_addresses",
-      "difficulty": "medium",
-      "feature": "West African name",
-      "text": "Fatou Ndiaye azali mokambi ya likita.",
-      "intent_en": "Fatou Ndiaye is chairing the meeting."
     },
     {
       "id": "LNG-170",
@@ -1378,44 +346,12 @@
       "intent_en": "The parcel will go to 120 Avenue Kasa-Vubu, Kinshasa."
     },
     {
-      "id": "LNG-172",
-      "domain": "names_addresses",
-      "difficulty": "hard",
-      "feature": "French street name and number",
-      "text": "Likita ezali na boulevard du 30 Juin, nimero 45.",
-      "intent_en": "The meeting is at number 45 on Boulevard du 30 Juin."
-    },
-    {
       "id": "LNG-173",
       "domain": "names_addresses",
       "difficulty": "hard",
       "feature": "Belgian address",
       "text": "Tindá mokanda na rue de la Loi 16, Bruxelles.",
       "intent_en": "Send the letter to 16 Rue de la Loi, Brussels."
-    },
-    {
-      "id": "LNG-174",
-      "domain": "names_addresses",
-      "difficulty": "hard",
-      "feature": "email address",
-      "text": "Tindá eyano na info@lingala.example.",
-      "intent_en": "Send the reply to info at lingala dot example."
-    },
-    {
-      "id": "LNG-175",
-      "domain": "names_addresses",
-      "difficulty": "hard",
-      "feature": "web address",
-      "text": "Makambo nyonso ezali na www.example.cd.",
-      "intent_en": "All the information is at www dot example dot cd."
-    },
-    {
-      "id": "LNG-176",
-      "domain": "names_addresses",
-      "difficulty": "medium",
-      "feature": "country name",
-      "text": "Akozonga na République démocratique du Congo lobi.",
-      "intent_en": "She will return to the Democratic Republic of the Congo tomorrow."
     },
     {
       "id": "LNG-177",
@@ -1426,52 +362,12 @@
       "intent_en": "The boat is traveling from Matadi to Boma."
     },
     {
-      "id": "LNG-178",
-      "domain": "names_addresses",
-      "difficulty": "hard",
-      "feature": "hyphenated personal name",
-      "text": "Jean-Pierre Kalala akobenga yo na mpokwa.",
-      "intent_en": "Jean-Pierre Kalala will call you this evening."
-    },
-    {
-      "id": "LNG-179",
-      "domain": "names_addresses",
-      "difficulty": "medium",
-      "feature": "initial and surname",
-      "text": "Dosye ezali na nkombo ya A. Bolamba.",
-      "intent_en": "The file is under the name A. Bolamba."
-    },
-    {
-      "id": "LNG-180",
-      "domain": "names_addresses",
-      "difficulty": "hard",
-      "feature": "multiple names and comma pauses",
-      "text": "Benga Clarisse, Joël, mpe Grâce liboso likita ebanda.",
-      "intent_en": "Call Clarisse, Joël, and Grâce before the meeting begins."
-    },
-    {
       "id": "LNG-181",
       "domain": "french_lingala_codeswitch",
       "difficulty": "medium",
       "feature": "invoice and email",
       "text": "Nasengi yo otindela ngai facture na e-mail.",
       "intent_en": "Please send me the invoice by email."
-    },
-    {
-      "id": "LNG-182",
-      "domain": "french_lingala_codeswitch",
-      "difficulty": "medium",
-      "feature": "meeting and French clock phrase",
-      "text": "Réunion ekobanda na neuf heures précises.",
-      "intent_en": "The meeting will start at exactly nine o'clock."
-    },
-    {
-      "id": "LNG-183",
-      "domain": "french_lingala_codeswitch",
-      "difficulty": "medium",
-      "feature": "delivery delay",
-      "text": "Client alobi ete commande na ye ezali en retard.",
-      "intent_en": "The customer says that their order is late."
     },
     {
       "id": "LNG-184",
@@ -1482,68 +378,12 @@
       "intent_en": "I would like an appointment for tomorrow."
     },
     {
-      "id": "LNG-185",
-      "domain": "french_lingala_codeswitch",
-      "difficulty": "medium",
-      "feature": "mobile application update",
-      "text": "Osengeli kosala mise à jour ya application.",
-      "intent_en": "You need to update the application."
-    },
-    {
-      "id": "LNG-186",
-      "domain": "french_lingala_codeswitch",
-      "difficulty": "medium",
-      "feature": "password security",
-      "text": "Kopesa mot de passe na yo na moto mosusu te.",
-      "intent_en": "Do not give your password to anyone else."
-    },
-    {
       "id": "LNG-187",
       "domain": "french_lingala_codeswitch",
       "difficulty": "hard",
       "feature": "technical troubleshooting",
       "text": "Connexion ezali instable; meká koboma mpe kozongisa Wi-Fi.",
       "intent_en": "The connection is unstable; try turning Wi-Fi off and on again."
-    },
-    {
-      "id": "LNG-188",
-      "domain": "french_lingala_codeswitch",
-      "difficulty": "medium",
-      "feature": "workplace deadline",
-      "text": "Boss asengi rapport ezala prêt avant midi.",
-      "intent_en": "The boss wants the report ready before noon."
-    },
-    {
-      "id": "LNG-189",
-      "domain": "french_lingala_codeswitch",
-      "difficulty": "medium",
-      "feature": "payment method",
-      "text": "Okoki kofuta na carte bancaire to na cash.",
-      "intent_en": "You can pay by bank card or in cash."
-    },
-    {
-      "id": "LNG-190",
-      "domain": "french_lingala_codeswitch",
-      "difficulty": "hard",
-      "feature": "quoted French phrase",
-      "text": "Alobaki: “Je suis désolé,” mpe akangaki telefone.",
-      "intent_en": "He said, 'I am sorry,' and hung up the phone."
-    },
-    {
-      "id": "LNG-191",
-      "domain": "french_lingala_codeswitch",
-      "difficulty": "medium",
-      "feature": "file attachment",
-      "text": "Document ezali na pièce jointe ya message.",
-      "intent_en": "The document is attached to the message."
-    },
-    {
-      "id": "LNG-192",
-      "domain": "french_lingala_codeswitch",
-      "difficulty": "medium",
-      "feature": "weekend plan",
-      "text": "Week-end oyo tokokende kotala libota.",
-      "intent_en": "This weekend we will go visit the family."
     },
     {
       "id": "LNG-193",
@@ -1554,52 +394,12 @@
       "intent_en": "Why did you send a message without explaining the problem?"
     },
     {
-      "id": "LNG-194",
-      "domain": "french_lingala_codeswitch",
-      "difficulty": "medium",
-      "feature": "office vocabulary",
-      "text": "Directeur azali na bureau te; akozonga sima.",
-      "intent_en": "The director is not in the office; they will return later."
-    },
-    {
-      "id": "LNG-195",
-      "domain": "french_lingala_codeswitch",
-      "difficulty": "hard",
-      "feature": "English technical loanwords",
-      "text": "Salá upload ya fichier, sima finá bouton “Envoyer”.",
-      "intent_en": "Upload the file, then press the Send button."
-    },
-    {
-      "id": "LNG-196",
-      "domain": "french_lingala_codeswitch",
-      "difficulty": "medium",
-      "feature": "transport announcement",
-      "text": "Vol na biso ezali annulé mpo na mauvais temps.",
-      "intent_en": "Our flight is canceled because of bad weather."
-    },
-    {
-      "id": "LNG-197",
-      "domain": "french_lingala_codeswitch",
-      "difficulty": "hard",
-      "feature": "formal French phrase inside Lingala",
-      "text": "Mpo na plus d’informations, benga service client.",
-      "intent_en": "For more information, call customer service."
-    },
-    {
       "id": "LNG-198",
       "domain": "french_lingala_codeswitch",
       "difficulty": "medium",
       "feature": "Bluetooth device pairing",
       "text": "Fungolá Bluetooth mpo casque ekangama na telefone.",
       "intent_en": "Turn on Bluetooth so the headset can connect to the phone."
-    },
-    {
-      "id": "LNG-199",
-      "domain": "french_lingala_codeswitch",
-      "difficulty": "hard",
-      "feature": "three-language technical support",
-      "text": "Soki login eboyi, clique na “Mot de passe oublié”.",
-      "intent_en": "If login fails, click 'Forgot password.'"
     },
     {
       "id": "LNG-200",
@@ -1609,5 +409,8 @@
       "text": "Na réunion ya lobi, tokotala budget, calendrier ya lancement, mpe feedback oyo ba clients batindaki.",
       "intent_en": "At tomorrow's meeting, we will review the budget, launch schedule, and feedback sent by customers."
     }
-  ]
+  ],
+  "parent_set_id": "lingala-v1-eval-draft-2026-07-29-v1",
+  "selection_rule": "Deterministic 50-line prototype subset: all eight domains, 9 easy, 21 medium, and 20 hard lines, prioritizing contemporary speech and high-risk TTS features.",
+  "prototype_audio_target": 30
 }

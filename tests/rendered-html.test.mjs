@@ -46,20 +46,25 @@ test("renders the Évaluation Lingala review shell", async () => {
   assert.equal(staticHtml, html);
 });
 
-test("packages the exact held-out evaluation draft", async () => {
+test("packages the exact held-out 50-line prototype evaluation", async () => {
   const [packaged, source] = await Promise.all([
     readFile(new URL("public/evaluation.json", root)),
-    readFile(new URL("../eval/lingala_eval_draft.json", root)),
+    readFile(new URL("../eval/lingala_eval_prototype.json", root)),
   ]);
   const hash = (value) => createHash("sha256").update(value).digest("hex");
   assert.equal(hash(packaged), hash(source));
 
   const evaluation = JSON.parse(packaged.toString("utf8"));
-  assert.equal(evaluation.set_id, "lingala-v1-eval-draft-2026-07-29-v1");
+  assert.equal(
+    evaluation.set_id,
+    "lingala-v1-eval-prototype-2026-07-29-v1",
+  );
   assert.equal(evaluation.held_out, true);
   assert.equal(evaluation.training_use, "prohibited");
-  assert.equal(evaluation.lines.length, 200);
-  assert.equal(new Set(evaluation.lines.map((line) => line.id)).size, 200);
+  assert.equal(evaluation.lines.length, 50);
+  assert.equal(new Set(evaluation.lines.map((line) => line.id)).size, 50);
+  assert.equal(evaluation.lines[0].id, "LNG-001");
+  assert.equal(evaluation.lines.at(-1).id, "LNG-200");
 });
 
 test("keeps submission private, constrained, and easy for reviewers", async () => {
@@ -84,6 +89,11 @@ test("keeps submission private, constrained, and easy for reviewers", async () =
   assert.match(page, /approved_with_correction/);
   assert.match(page, /needs_discussion/);
   assert.match(page, /result_type:\s*"lingala_native_text_review"/);
+  assert.match(page, /const TARGET_APPROVALS = 40/);
+  assert.match(page, /stats\.reviewed === dataset\.lines\.length/);
+  assert.match(page, /if \(!dataset \|\| !session \|\| !allReviewed \|\| submitting\) return/);
+  assert.match(page, /Après les 50 phrases/);
+  assert.match(page, /After all 50 sentences/);
   assert.match(page, /transmis en privé à contact@intellingo\.app/);
   assert.match(page, /sent privately to contact@intellingo\.app/);
   assert.doesNotMatch(page, /navigator\.share/);

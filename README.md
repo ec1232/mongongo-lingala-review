@@ -9,6 +9,7 @@ Phone-first native-speaker review for the held-out Lingala TTS evaluation set.
 - Three main answers: natural, rewrite, or unsure.
 - Progress saves in the reviewer's browser.
 - Each device/session remains separate.
+- All 50 prototype phrases must be reviewed before submission.
 - One final button sends the completed review privately to
   `contact@intellingo.app`.
 - A download appears as a recovery option if automatic sending fails.
@@ -21,9 +22,9 @@ review as a JSON attachment to the fixed Intellingo destination.
 ## Data boundary
 
 `public/evaluation.json` must remain byte-for-byte identical to
-`../eval/lingala_eval_draft.json`. The set is held out and prohibited from
-training. `app/intents-fr.ts` contains reviewer-only French reading aids; those
-paraphrases are not evaluation text.
+`../eval/lingala_eval_prototype.json`. The 50-line set is held out and
+prohibited from training. `app/intents-fr.ts` contains reviewer-only French
+reading aids; those paraphrases are not evaluation text.
 
 ## Commands
 
