@@ -19,6 +19,17 @@ only the fixed evaluation schema, stores a private backup with row-level
 security, rate-limits requests, suppresses duplicate sends, and emails the
 review as a JSON attachment to the fixed Intellingo destination.
 
+## Private results
+
+`/results` is a mobile-responsive dashboard for the private backup. It requires
+the existing Supabase account for `contact@intellingo.app`; the browser keeps
+the short-lived session only in session storage. A separate read-only Edge
+Function re-validates the signed-in user, excludes labelled deployment tests,
+and returns no IP or email-delivery metadata.
+
+The dashboard shows the 40-of-50 prototype gate, the five-per-domain minimum,
+speaker summaries, corrections, disagreements, and a combined JSON export.
+
 ## Data boundary
 
 `public/evaluation.json` must remain byte-for-byte identical to
