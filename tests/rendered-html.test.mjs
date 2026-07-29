@@ -60,9 +60,11 @@ test("packages the exact held-out evaluation draft", async () => {
 });
 
 test("keeps the remote review private-by-design and easy to return", async () => {
-  const [page, frenchAids] = await Promise.all([
+  const [page, frenchAids, css, layout] = await Promise.all([
     readFile(new URL("app/page.tsx", root), "utf8"),
     readFile(new URL("app/intents-fr.ts", root), "utf8"),
+    readFile(new URL("app/globals.css", root), "utf8"),
+    readFile(new URL("app/layout.tsx", root), "utf8"),
   ]);
 
   assert.match(page, /localStorage\.setItem/);
@@ -84,4 +86,10 @@ test("keeps the remote review private-by-design and easy to return", async () =>
   assert.equal(new Set(ids).size, 200);
   assert.equal(ids[0], "LNG-001");
   assert.equal(ids.at(-1), "LNG-200");
+
+  assert.match(css, /@media \(max-width: 370px\)/);
+  assert.match(css, /env\(safe-area-inset-top\)/);
+  assert.match(css, /min-height:\s*100svh/);
+  assert.match(css, /touch-action:\s*manipulation/);
+  assert.doesNotMatch(layout, /maximumScale/);
 });
